@@ -1,0 +1,27 @@
+### To get meta data
+GET http://localhost:4004/odata/v4/customer/$metadata?$format=json
+
+### Read products entity
+GET http://localhost:4004/odata/v4/customer/Products
+
+### To create data in products
+ POST http://localhost:4004/odata/v4/customer/Products
+ Content-Type: application/json
+
+{  
+      "productName": "Surface ipad 15 inches",
+      "type": "Tablet",
+      "price": "1500",
+      "category": "Electronics"
+}
+
+### To update Products entity
+PATCH http://localhost:4004/odata/v4/customer/Products(ID='4f0e88d6-c8a4-4e64-ac04-667d003670e3')  
+Content-Type: application/json
+
+{
+    "category": "Machine"
+}
+
+### To delete Products entity
+DELETE http://localhost:4004/odata/v4/customer/Products(ID='4f0e88d6-c8a4-4e64-ac04-667d003670e3')
