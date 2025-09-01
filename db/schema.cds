@@ -13,12 +13,12 @@ namespace customer.data.model;
   email: commonType default 'mamatha@sample.com';
   key phone: commonType;
   orders: Association to many Orders on orders.customer = $self;
- //orders: Composition to many Orders on orders.customer = $self;
+ //orders: Composition of many Orders on orders.customer = $self;
 }
 entity Orders : cuid,managed {
    orderDate : Date;
    orderType: String(20);
-   orderStatus: String(20);
+   orderStatus: Association to status default '01';
    product: Association to Products;
    customer : Association to Customers;
 }
@@ -29,17 +29,16 @@ entity Products : cuid,{
    category: String(30);
    
 }
-entity Employees {
-    address: Association to Address on address.ID = address_ID;
-    address_ID : Integer;
+entity status{
+   key code: String;
+   name:String;
 }
-entity Address{
-   key ID :Integer;// FK
+entity Employee :cuid,commonaspect.CommonFields {
+   gender:String(10);
+   email:String(20);
+   phoneNumber:String(20);
+   department:String(10);
+    
 }
- //type enum
-
-//  type Gender: String enum {
-//    male;
-//    female;
-//    nonbinary = "nonbinary";
-//  }
+ 
+ 
